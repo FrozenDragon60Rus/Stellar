@@ -7,10 +7,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\css\**" />
     <Compile Remove="Views\html5up-stellar\**" />
+    <Compile Remove="Views\Img\**" />
+    <Compile Remove="Views\js\**" />
+    <Compile Remove="Views\sass\**" />
+    <Compile Remove="Шаблон\**" />
+    <Content Remove="Views\css\**" />
     <Content Remove="Views\html5up-stellar\**" />
+    <Content Remove="Views\Img\**" />
+    <Content Remove="Views\js\**" />
+    <Content Remove="Views\sass\**" />
+    <Content Remove="Шаблон\**" />
+    <EmbeddedResource Remove="Views\css\**" />
     <EmbeddedResource Remove="Views\html5up-stellar\**" />
+    <EmbeddedResource Remove="Views\Img\**" />
+    <EmbeddedResource Remove="Views\js\**" />
+    <EmbeddedResource Remove="Views\sass\**" />
+    <EmbeddedResource Remove="Шаблон\**" />
+    <None Remove="Views\css\**" />
     <None Remove="Views\html5up-stellar\**" />
+    <None Remove="Views\Img\**" />
+    <None Remove="Views\js\**" />
+    <None Remove="Views\sass\**" />
+    <None Remove="Шаблон\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,13 +39,6 @@
 
   <ItemGroup>
     <None Remove="Views\html5up-stellar.zip" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\Img\" />
-    <Folder Include="Views\css\" />
-    <Folder Include="Views\js\" />
-    <Folder Include="Views\sass\" />
   </ItemGroup>
 
 </Project>
