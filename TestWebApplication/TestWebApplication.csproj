@@ -7,38 +7,31 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Views\css\**" />
-    <Compile Remove="Views\html5up-stellar\**" />
-    <Compile Remove="Views\Img\**" />
-    <Compile Remove="Views\js\**" />
-    <Compile Remove="Views\sass\**" />
     <Compile Remove="Шаблон\**" />
-    <Content Remove="Views\css\**" />
-    <Content Remove="Views\html5up-stellar\**" />
-    <Content Remove="Views\Img\**" />
-    <Content Remove="Views\js\**" />
-    <Content Remove="Views\sass\**" />
     <Content Remove="Шаблон\**" />
-    <EmbeddedResource Remove="Views\css\**" />
-    <EmbeddedResource Remove="Views\html5up-stellar\**" />
-    <EmbeddedResource Remove="Views\Img\**" />
-    <EmbeddedResource Remove="Views\js\**" />
-    <EmbeddedResource Remove="Views\sass\**" />
     <EmbeddedResource Remove="Шаблон\**" />
-    <None Remove="Views\css\**" />
-    <None Remove="Views\html5up-stellar\**" />
-    <None Remove="Views\Img\**" />
-    <None Remove="Views\js\**" />
-    <None Remove="Views\sass\**" />
     <None Remove="Шаблон\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Shared\Css.cshtml" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Models\ViewComponents\" />
+    <Folder Include="wwwroot\" />
+    <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\img\" />
+    <Folder Include="wwwroot\js\" />
+    <Folder Include="wwwroot\sass\" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Views\html5up-stellar.zip" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.0" />
   </ItemGroup>
 
 </Project>
