@@ -2,7 +2,7 @@
 
 namespace TestWebApplication.Domain.Entities
 {
-    public class ServiceItem : Entities
+    public class ServiceItem : Entity
     {
         [Required(ErrorMessage = "Отсутствует заголовок")]
         [Display(Name = "Название")]

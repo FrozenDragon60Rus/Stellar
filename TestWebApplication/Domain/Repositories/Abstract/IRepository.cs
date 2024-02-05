@@ -4,9 +4,9 @@ namespace TestWebApplication.Domain.Repositories.Abstract
 {
 	public interface IRepository
 	{
-		IQueryable<ServiceItem> GetServiceFields();
-		ServiceItem GetServiceFieldById(Guid id);
-		void SaveServiceField(ServiceItem entity);
-		void DeleteSeriveField(Guid id);
+		IQueryable<Entity> Get();
+		Entity GetById(Guid id);
+		void Save(Entity entity);
+		void Delete(Guid id);
 	}
 }

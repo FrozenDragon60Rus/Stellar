@@ -4,6 +4,6 @@ namespace TestWebApplication.Domain.Repositories.Abstract
 {
 	public interface ICodeWord
 	{
-		TextField GetTextFieldByCodeWord(string codeWord);
+		TextField GetByCodeWord(string codeWord);
 	}
 }

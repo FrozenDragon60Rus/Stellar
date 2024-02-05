@@ -2,9 +2,9 @@
 
 namespace TestWebApplication.Domain.Entities
 {
-    public abstract class Entities
+    public abstract class Entity
     {
-        protected Entities() => DateAdded = DateTime.UtcNow;
+        protected Entity() => DateAdded = DateTime.UtcNow;
 
         [Required]
         public Guid Id { get; set; }

@@ -2,7 +2,7 @@
 
 namespace TestWebApplication.Domain.Entities
 {
-    public class TextField : Entities
+    public class TextField : Entity
     {
         [Required]
         public string CodeWord { get; set; }
