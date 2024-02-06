@@ -2,12 +2,12 @@
 
 namespace TestWebApplication.Domain.Repositories.Abstract
 {
-	public interface ITextFieldRepository : IRepository
+	public interface ITextFieldRepository
 	{
-		IQueryable<Entity> Get();
+		IQueryable<TextField> Get();
+		TextField GetById(Guid id);
 		TextField GetByCodeWord(string codeWord);
-		Entity GetById(Guid id);
-		void Save(Entity entity);
+		void Save(TextField entity);
 		void Delete(Guid id);
 	}
 }

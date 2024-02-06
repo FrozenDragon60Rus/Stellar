@@ -151,15 +151,15 @@ namespace TestWebApplication.Migrations
                         {
                             Id = "e360f027-6ddf-4a22-a40a-11ca38551f65",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "63ea1ad8-1096-4027-9ac5-80f4eacacadf",
+                            ConcurrencyStamp = "d9e775c8-32db-419b-9eb2-d905a1fe4be1",
                             Email = "my@email.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "MY@EMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAENf8CP2hN6UOszRh3YcyPZlkbyI92QpC77hnHT9lxa4CU6lLFguan6n9LJfppWJzoA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEH5Y3KMbu3Jh2j2VS2waByYoycRiwuBD/Bf/RvJcaUPizlNTU6Tffeibs+r+UE6yWA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "158f358b-27fb-4c46-86d7-a555e8040ca1",
+                            SecurityStamp = "",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
@@ -253,7 +253,7 @@ namespace TestWebApplication.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("TestWebApplication.Domain.Entities.Entity", b =>
+            modelBuilder.Entity("TestWebApplication.Domain.Entities.ServiceItem", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -261,11 +261,6 @@ namespace TestWebApplication.Migrations
 
                     b.Property<DateTime>("DateAdded")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasMaxLength(13)
-                        .HasColumnType("nvarchar(13)");
 
                     b.Property<string>("MetaDescription")
                         .IsRequired()
@@ -298,61 +293,92 @@ namespace TestWebApplication.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ServiceItems");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Entity");
-
-                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("TestWebApplication.Domain.Entities.TextField", b =>
                 {
-                    b.HasBaseType("TestWebApplication.Domain.Entities.Entity");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CodeWord")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasDiscriminator().HasValue("TextField");
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("MetaDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MetaKeywords")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MetaTitle")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subtitle")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleImagePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TextFields");
 
                     b.HasData(
                         new
                         {
                             Id = new Guid("182808c5-a391-4119-901a-19ae51c297fd"),
-                            DateAdded = new DateTime(2024, 2, 6, 18, 1, 53, 984, DateTimeKind.Utc).AddTicks(9570),
+                            CodeWord = "PageIndex",
+                            DateAdded = new DateTime(2024, 2, 6, 19, 59, 53, 928, DateTimeKind.Utc).AddTicks(8559),
                             MetaDescription = "",
                             MetaKeywords = "",
                             MetaTitle = "",
                             Subtitle = "",
                             Text = "",
-                            Title = "",
-                            TitleImagePath = "",
-                            CodeWord = "PageIndex"
+                            Title = "Глвная",
+                            TitleImagePath = ""
                         },
                         new
                         {
                             Id = new Guid("9abb5bb5-c00f-4f0a-b586-1c5629b5d268"),
-                            DateAdded = new DateTime(2024, 2, 6, 18, 1, 53, 984, DateTimeKind.Utc).AddTicks(9607),
+                            CodeWord = "PageServices",
+                            DateAdded = new DateTime(2024, 2, 6, 19, 59, 53, 928, DateTimeKind.Utc).AddTicks(8589),
                             MetaDescription = "",
                             MetaKeywords = "",
                             MetaTitle = "",
                             Subtitle = "",
                             Text = "",
-                            Title = "",
-                            TitleImagePath = "",
-                            CodeWord = "PageServices"
+                            Title = "Наши услуги",
+                            TitleImagePath = ""
                         },
                         new
                         {
                             Id = new Guid("831014fa-973f-49b0-a409-7120910f153f"),
-                            DateAdded = new DateTime(2024, 2, 6, 18, 1, 53, 984, DateTimeKind.Utc).AddTicks(9629),
+                            CodeWord = "PageContacts",
+                            DateAdded = new DateTime(2024, 2, 6, 19, 59, 53, 928, DateTimeKind.Utc).AddTicks(8606),
                             MetaDescription = "",
                             MetaKeywords = "",
                             MetaTitle = "",
                             Subtitle = "",
                             Text = "",
-                            Title = "",
-                            TitleImagePath = "",
-                            CodeWord = "PageContacts"
+                            Title = "Контакты",
+                            TitleImagePath = ""
                         });
                 });
 

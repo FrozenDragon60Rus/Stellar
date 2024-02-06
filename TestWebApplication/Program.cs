@@ -17,8 +17,8 @@ services.AddControllersWithViews();
 
 new TestWebApplication.BindConfiguration(ref builder, [new Config()]);
 
-services.AddTransient<IRepository, EFRepository>();
-services.AddTransient<ITextFieldRepository, EFRepository>();
+services.AddTransient<ITextFieldRepository, EFTextFieldRepository>();
+services.AddTransient<IServiceItemRepository, EFServiceItemRepository>();
 services.AddTransient<DataManager>();
 
 services.AddDbContext<AppDbContext>(x => x.UseSqlServer(Config.ConnectionString));

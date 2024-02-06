@@ -9,7 +9,7 @@ namespace TestWebApplication.Domain
 	{
 		public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-		public DbSet<Entity> ServiceItems { get; set; }
+		public DbSet<ServiceItem> ServiceItems { get; set; }
 		public DbSet<TextField> TextFields { get; set; }
 
 		private Guid roleGuid = new Guid("9538d32c-93ef-4b5d-9fad-9edb5763e936");
@@ -34,7 +34,8 @@ namespace TestWebApplication.Domain
 				Email = "my@email.com",
 				NormalizedEmail = "MY@EMAIL.COM",
 				EmailConfirmed = true,
-				PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, "password")
+				PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, "password"),
+				SecurityStamp = string.Empty
 			});
 
 			modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>

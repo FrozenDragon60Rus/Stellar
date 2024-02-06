@@ -4,7 +4,7 @@ using TestWebApplication.Domain.Repositories.Abstract;
 
 namespace TestWebApplication.Domain.Repositories.EntityFramework
 {
-	/*public class EFServiceItemRepository : IServiceItemRepository
+	public class EFServiceItemRepository : IServiceItemRepository
 	{
 		private readonly AppDbContext context;
 		public EFServiceItemRepository(AppDbContext context) =>
@@ -30,5 +30,5 @@ namespace TestWebApplication.Domain.Repositories.EntityFramework
 			context.ServiceItems.Remove(new ServiceItem() { Id = id });
 			context.SaveChanges();
 		}
-	}*/
+	}
 }

@@ -1,11 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TestWebApplication.Domain;
-using TestWebApplication.Domain.Repositories.Abstract;
 using TestWebApplication.Domain.Entities;
+using TestWebApplication.Domain.Repositories.Abstract;
 
 namespace TestWebApplication.Domain.Repositories.EntityFramework
 {
-	/*public class EFTextFieldRepository : ITextFieldRepository
+	public class EFTextFieldRepository : ITextFieldRepository
 	{
 		private readonly AppDbContext context;
 		public EFTextFieldRepository(AppDbContext context) =>
@@ -33,5 +32,5 @@ namespace TestWebApplication.Domain.Repositories.EntityFramework
 			context.TextFields.Remove(new TextField() { Id = id });
 			context.SaveChanges();
 		}
-	}*/
+	}
 }
