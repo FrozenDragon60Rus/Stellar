@@ -1,9 +1,49 @@
+using Microsoft.EntityFrameworkCore;
+using TestWebApplication.Domain;
+using TestWebApplication.Service;
+using TestWebApplication.Domain.Repositories.Abstract;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
+using TestWebApplication.Domain.Repositories.EntityFramework;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
+#region Services
 
-builder.Configuration.Bind("Project", new TestWebApplication.Service.Config());
+var services = builder.Services;
+
+// Add services to the container.
+services.AddControllersWithViews();
+
+new TestWebApplication.BindConfiguration(ref builder, [new Config()]);
+
+services.AddTransient<IRepository, EFRepository>();
+services.AddTransient<ITextFieldRepository, EFRepository>();
+services.AddTransient<DataManager>();
+
+services.AddDbContext<AppDbContext>(x => x.UseSqlServer(Config.ConnectionString));
+
+services.AddIdentity<IdentityUser, IdentityRole>(options =>
+{
+	options.User.RequireUniqueEmail = true;
+	options.Password.RequiredLength = 6;
+	options.Password.RequireNonAlphanumeric = false;
+	options.Password.RequireLowercase = false;
+	options.Password.RequireUppercase = false;
+	options.Password.RequireDigit = false;
+}).AddEntityFrameworkStores<AppDbContext>()
+.AddDefaultTokenProviders();
+
+services.ConfigureApplicationCookie(options =>
+{
+	options.Cookie.Name = "StelareAuthorization";
+	options.Cookie.HttpOnly = true;
+	options.LoginPath = "/admin";
+	options.AccessDeniedPath = "/access/accessdenied";
+	options.SlidingExpiration = true;
+});
+
+#endregion
 
 var app = builder.Build();
 
@@ -20,6 +60,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseCookiePolicy();
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

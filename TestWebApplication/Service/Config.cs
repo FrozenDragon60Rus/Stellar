@@ -6,5 +6,7 @@
 		public static string? ProjectName { set; get; }
 		public static string? Phone { set; get; }	
 		public static string? EMail { set; get; }
+
+		public override string ToString() => "Project";
 	}
 }

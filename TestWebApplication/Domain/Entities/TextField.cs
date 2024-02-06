@@ -8,9 +8,9 @@ namespace TestWebApplication.Domain.Entities
         public string CodeWord { get; set; }
 
         [Display(Name = "Название")]
-        public virtual string Title { get; set; } = string.Empty;
+        public override string Title { get; set; } = string.Empty;
 
         [Display(Name = "Полное описание")]
-        public virtual string Text { get; set; } = string.Empty;
+        public override string Text { get; set; } = string.Empty;
     }
 }

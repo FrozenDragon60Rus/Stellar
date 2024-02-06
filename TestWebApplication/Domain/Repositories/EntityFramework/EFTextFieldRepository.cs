@@ -5,22 +5,22 @@ using TestWebApplication.Domain.Entities;
 
 namespace TestWebApplication.Domain.Repositories.EntityFramework
 {
-	public class EFTextFieldsRepository : IRepository, ICodeWord
+	/*public class EFTextFieldRepository : ITextFieldRepository
 	{
 		private readonly AppDbContext context;
-		public EFTextFieldsRepository(AppDbContext context) =>
+		public EFTextFieldRepository(AppDbContext context) =>
 			this.context = context;
 
-		public IQueryable<Entity> Get() =>
+		public IQueryable<TextField> Get() =>
 			context.TextFields;
 
-		public Entity GetById(Guid id) =>
+		public TextField GetById(Guid id) =>
 			context.TextFields.FirstOrDefault(x => x.Id == id);
 
 		public TextField GetByCodeWord(string CodeWord) =>
 			context.TextFields.FirstOrDefault(x => x.CodeWord == CodeWord);
 
-		public void Save(Entity entity)
+		public void Save(TextField entity)
 		{
 			if(entity.Id == default)
 				context.Entry(entity).State = EntityState.Added;
@@ -33,5 +33,5 @@ namespace TestWebApplication.Domain.Repositories.EntityFramework
 			context.TextFields.Remove(new TextField() { Id = id });
 			context.SaveChanges();
 		}
-	}
+	}*/
 }
