@@ -3,8 +3,8 @@ using TestWebApplication.Domain;
 using TestWebApplication.Service;
 using TestWebApplication.Domain.Repositories.Abstract;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Options;
 using TestWebApplication.Domain.Repositories.EntityFramework;
+using TestWebApplication.Areas.Admin;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,17 +32,25 @@ services.AddIdentity<IdentityUser, IdentityRole>(options =>
 	options.Password.RequireUppercase = false;
 	options.Password.RequireDigit = false;
 }).AddEntityFrameworkStores<AppDbContext>()
-.AddDefaultTokenProviders();
+  .AddDefaultTokenProviders();
 
 services.ConfigureApplicationCookie(options =>
 {
 	options.Cookie.Name = "StelareAuthorization";
 	options.Cookie.HttpOnly = true;
-	options.LoginPath = "/admin";
-	options.AccessDeniedPath = "/access/accessdenied";
+	options.LoginPath = "/account/login";
+	options.AccessDeniedPath = "/account/accessdenied";
 	options.SlidingExpiration = true;
 });
 
+services.AddAuthorization(x =>
+{
+	x.AddPolicy("AdminArea", policy => { policy.RequireRole("admin"); });
+});
+
+services.AddControllersWithViews(x =>
+	x.Conventions.Add(new AdminAreaAutorization("Admin", "AdminArea"))
+).AddSessionStateTempDataProvider();
 #endregion
 
 var app = builder.Build();
@@ -64,6 +72,9 @@ app.UseCookiePolicy();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapControllerRoute(
+    name: "admin",
+    pattern: "{area=exists}/{controller=Admin}/{action=Index}/{id?}");
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

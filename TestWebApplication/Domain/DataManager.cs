@@ -5,8 +5,8 @@ namespace TestWebApplication.Domain
 {
 	public class DataManager
 	{
-		IServiceItemRepository ServiceItems {  get; set; }
-		ITextFieldRepository TextFields { get; set; }
+		public IServiceItemRepository ServiceItems {  get; set; }
+		public ITextFieldRepository TextFields { get; set; }
 
 		public DataManager(IServiceItemRepository repository, ITextFieldRepository textFieldRepository)
 		{
