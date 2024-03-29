@@ -1,12 +1,10 @@
-﻿using System.Reflection;
-using TestWebApplication.Service;
-
-namespace TestWebApplication
+﻿namespace TestWebApplication
 {
-	public class BindConfiguration
+	public static class Configuration
 	{
-		public BindConfiguration(ref WebApplicationBuilder builder, object?[] instance)
+		public static void Bind(ref WebApplicationBuilder builder, object?[] instance)
 		{
+#pragma warning disable CS8604, CS8602
 			foreach (var service in instance)
 				builder.Configuration.Bind(service.ToString(), service);
 		}

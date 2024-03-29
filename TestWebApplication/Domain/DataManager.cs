@@ -3,15 +3,10 @@ using TestWebApplication.Domain.Repositories.Abstract;
 
 namespace TestWebApplication.Domain
 {
-	public class DataManager
+	public class DataManager(IServiceItemRepository repository, 
+							 ITextFieldRepository textFieldRepository)
 	{
-		public IServiceItemRepository ServiceItems {  get; set; }
-		public ITextFieldRepository TextFields { get; set; }
-
-		public DataManager(IServiceItemRepository repository, ITextFieldRepository textFieldRepository)
-		{
-			ServiceItems = repository;
-			TextFields = textFieldRepository;
-		}
+		public IServiceItemRepository ServiceItems {  get; set; } = repository;
+		public ITextFieldRepository TextFields { get; set; } = textFieldRepository;
 	}
 }

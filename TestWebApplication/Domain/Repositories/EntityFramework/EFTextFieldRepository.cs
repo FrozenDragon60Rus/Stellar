@@ -4,11 +4,9 @@ using TestWebApplication.Domain.Repositories.Abstract;
 
 namespace TestWebApplication.Domain.Repositories.EntityFramework
 {
-	public class EFTextFieldRepository : ITextFieldRepository
+	public class EFTextFieldRepository(AppDbContext context) : ITextFieldRepository
 	{
-		private readonly AppDbContext context;
-		public EFTextFieldRepository(AppDbContext context) =>
-			this.context = context;
+		private readonly AppDbContext context = context;
 
 		public IQueryable<TextField> Get() =>
 			context.TextFields;

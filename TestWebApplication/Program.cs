@@ -15,7 +15,7 @@ var services = builder.Services;
 // Add services to the container.
 services.AddControllersWithViews();
 
-new TestWebApplication.BindConfiguration(ref builder, [new Config()]);
+TestWebApplication.Configuration.Bind(ref builder, [new Config()]);
 
 services.AddTransient<ITextFieldRepository, EFTextFieldRepository>();
 services.AddTransient<IServiceItemRepository, EFServiceItemRepository>();
@@ -43,10 +43,8 @@ services.ConfigureApplicationCookie(options =>
 	options.SlidingExpiration = true;
 });
 
-services.AddAuthorization(x =>
-{
-	x.AddPolicy("AdminArea", policy => { policy.RequireRole("admin"); });
-});
+services.AddAuthorizationBuilder()
+		.AddPolicy("AdminArea", policy => policy.RequireRole("admin"));
 
 services.AddControllersWithViews(x =>
 	x.Conventions.Add(new AdminAreaAutorization("Admin", "AdminArea"))

@@ -4,17 +4,14 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace TestWebApplication.Areas.Admin
 {
-    public class AdminAreaAutorization : IControllerModelConvention
+    public class AdminAreaAutorization(string area, 
+                                       string policy) 
+        : IControllerModelConvention
     {
-        private readonly string area;
-        private readonly string policy;
+        private readonly string area = area;
+        private readonly string policy = policy;
 
-        public AdminAreaAutorization(string area, string policy)
-        {
-            this.area = area;
-            this.policy = policy;
-        }
-
+#pragma warning disable CS8602
         public void Apply(ControllerModel controller)
         {
             if (controller.Attributes.Any(a =>

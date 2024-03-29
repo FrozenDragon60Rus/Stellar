@@ -9,7 +9,7 @@ namespace TestWebApplication.Domain.Entities
         public override string Title { get; set; } = string.Empty;
 
         [Display(Name = "Краткое описание")]
-        public override string Subtitle { get; set; }
+        public override string Subtitle { get; set; } = string.Empty;
 
         [Display(Name = "Полное описание")]
         public override string Text { get; set; } = string.Empty;

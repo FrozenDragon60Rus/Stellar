@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using TestWebApplication.Models;
@@ -7,16 +6,12 @@ using TestWebApplication.Models;
 namespace TestWebApplication.Controllers
 {
 	[Authorize]
-	public class AccountController : Controller
+	public class AccountController(UserManager<IdentityUser> userManager, 
+								   SignInManager<IdentityUser> signInManager) 
+		: Controller
 	{
-		private readonly UserManager<IdentityUser> userManager;
-		private readonly SignInManager<IdentityUser> signInManager;
-
-		public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
-		{
-			this.userManager = userManager;
-			this.signInManager = signInManager;
-		}
+		private readonly UserManager<IdentityUser> userManager = userManager;
+		private readonly SignInManager<IdentityUser> signInManager = signInManager;
 
 		[AllowAnonymous]
 		public IActionResult Login(string returnUrl)
@@ -42,7 +37,7 @@ namespace TestWebApplication.Controllers
 
                 ModelState.AddModelError(nameof(LoginViewModel.UserName), "Неверный логин или пароль");
             }
-			return View(model);
+            return Login(returnUrl);
 		}
 
 		[Authorize]

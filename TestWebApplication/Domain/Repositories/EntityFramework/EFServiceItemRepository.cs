@@ -4,11 +4,9 @@ using TestWebApplication.Domain.Repositories.Abstract;
 
 namespace TestWebApplication.Domain.Repositories.EntityFramework
 {
-	public class EFServiceItemRepository : IServiceItemRepository
+	public class EFServiceItemRepository(AppDbContext context) : IServiceItemRepository
 	{
-		private readonly AppDbContext context;
-		public EFServiceItemRepository(AppDbContext context) =>
-			this.context = context;
+		private readonly AppDbContext context = context;
 
 		public IQueryable<ServiceItem> Get() =>
 			context.ServiceItems;
